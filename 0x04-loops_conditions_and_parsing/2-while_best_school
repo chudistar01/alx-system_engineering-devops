@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
-# script that displays Best School 10 times
+#!usr/bin/env bash
+#task 2
 
-index=0
+i=1
 
-while[ "$index" -lt 10 ]; do
-	echo "Best School"
-	((index++))
+while [ $i -le 10 ]
+do
+    echo "Best School"
+    ((i++))
 done
