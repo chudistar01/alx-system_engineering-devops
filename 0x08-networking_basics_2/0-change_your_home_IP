@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #changes localhost and facebook
 
 cp /etc/hosts new_hosts
