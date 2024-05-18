@@ -6,19 +6,25 @@ exec { 'update system':
 
 package { 'nginx':
         ensure => 'installed',
-	require => Exec['update system']
+	require => Exec['update system'],
 }
 
-file {'/var/www/html/index.html':
-       content => 'Hello World!'
+file { '/var/www/html/index.html':
+       ensure  => file, 
+       content => 'Hello World!',
+       require => Package['nginx'],
 }
 
-exec {'redirect_me':
-       command => 'sudo sed -i '/listen 80 default_server/a \ rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;' /etc/nginx/sites-available/default',
-       provider => 'shell'
+exec { 'redirect_me':
+       command => '/bin/sed -i \'/listen 80 default_server/a \ \ \ rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;\' /etc/nginx/sites-available/default',
+       provider => 'shell',
+       require  => Package['nginx'],
+       notify   => Service['nginx'],
 }
 
-service {'nginx':
+service { 'nginx':
         ensure => running,
-	require => Package['nginx']
+	enable => running,
+	subscribe => Exec['redirect_me'],
+
 }
