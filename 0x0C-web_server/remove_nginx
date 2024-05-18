@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+sudo apt purge nginx
+sudo rm -rf /etc/nginx
+sudo apt autoremove
