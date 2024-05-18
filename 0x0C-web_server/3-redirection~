@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Install nginx on your server
+
+sudo apt update
+
+sudo apt install -y nginx
+
+sudo update-rc.d nginx defaults
+
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+sudo sed -i 's|root /var/www/html;|root /var/www/html;|' /etc/nginx/sites-available/default
+
+sudo sed -i 's|index .*|index index.html;|' /etc/nginx/sites-available/default
+
+sudo service nginx restart
