@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+sudo service stop haproxy
+
+sudo service disable haproxy
+
+sudo apt-get -y purge haproxy
+
+sudo rm -rf /etc/haproxy
+
+sudo rm -rf /etc/default/haproxy
+
+
