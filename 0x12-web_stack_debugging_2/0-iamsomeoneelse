@@ -2,7 +2,6 @@
 #script that run the whoami command
 
 if [ "$#" -ne 1 ]; then
-    exit 1
+    exit(1)
 fi
-
 sudo -c whoami "$1"
