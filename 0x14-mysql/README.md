@@ -1,0 +1,1 @@
+This is sql project. I had to uninstall firewall before I was able to install the recommended mysql
