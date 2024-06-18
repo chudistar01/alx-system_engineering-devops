@@ -1,16 +1,29 @@
 #!/usr/bin/env bash
 #firewall configurations
 
+echo "Updating package lists"
 sudo apt-get update
+
+echo "installing firewall"
 sudo apt-get install -y ufw
 
+echo "disabling firewall"
 sudo ufw disable
 
+echo "Setting default policies"
 sudo ufw default deny incoming
 sudo ufw default deny outgoing
 
+echo "Allowing SSH (port 22)"
 sudo ufw allow 22/tcp
+
+echo "Allowing HTTPS (port 443)"
 sudo ufw allow 443/tcp
+
+echo "Allowing HTTP (port 80)"
 sudo ufw allow 80/tcp
 
+echo "Enabling UFW."
 sudo ufw enable
+
+echo "Firewall configuration complete"
